@@ -50,6 +50,25 @@ class Settings extends Component{
             )
         }
 
+        else if(this.props.method === "removeDuplicates"){
+            return (
+        <div> 
+            <div className="form-check form-check-inline">
+                    <input className="form-check-input" id="duplicatesCheckbox1" defaultChecked type="radio" name="filter" value="unique" onChange={this.props.handleSettings}/>
+                    <label className="form-check-label" htmlFor="duplicatesCheckbox1">Iba unikátne výsledky</label>    
+            </div>
+            <div className="form-check form-check-inline">
+                    <input className="form-check-input" id="duplicatesCheckbox2" type="radio" name="filter" value="duplicate" onChange={this.props.handleSettings}/>
+                    <label className="form-check-label" htmlFor="duplicatesCheckbox2">Iba duplikátne výsledky</label>    
+            </div>
+            <div className="form-check form-check-inline">
+                    <input className="form-check-input" id="duplicatesCheckbox3" type="radio" name="filter" value="nonduplicate" onChange={this.props.handleSettings}/>
+                    <label className="form-check-label" htmlFor="duplicatesCheckbox3">Iba ne-duplikátne výsledky</label>    
+            </div>        
+        </div>
+            )
+        }
+
         else if(this.props.method === "scrapeSingleWeb"){
             return (
                 <div>

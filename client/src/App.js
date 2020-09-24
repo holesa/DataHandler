@@ -28,10 +28,10 @@ class App extends React.Component{
     // ** Helper methods */
     handleChange=(e)=>{
      this.setState({[e.target.name]:e.target.value})
-     const methods = ["convertToDomain","scrapeSingleWeb","urlBuilder","checkFootprint"]
+     const methods = ["convertToDomain","scrapeSingleWeb","urlBuilder","checkFootprint","removeDuplicates"]
      if(e.target.name === "method"){
        if(methods.includes(e.target.value)){
-         this.setState({showSettings:true, settings:{fullsite:"false",attr:"href", order:"false"} })
+         this.setState({showSettings:true, settings:{filter:"unique", fullsite:"false",attr:"href", order:"false"} })
         }
        else{
          this.setState({showSettings:false, settings:{}})
@@ -171,10 +171,19 @@ class App extends React.Component{
 
      // Method => Remove duplicates
      removeDuplicates =()=>{
-      const data = this.state.input.split("\n") 
-      const newData = [...new Set(data)].join("\n")
-        this.setState({output:newData,
-                      showSettings:false
+      const data = this.state.input.split("\n")
+      let result;
+      if(this.state.settings.filter === "unique"){
+         result = [...new Set(data)].join("\n");
+      }
+      if(this.state.settings.filter === "duplicate"){
+         result = data.filter((d,i,arr)=>arr.indexOf(d) === i && arr.lastIndexOf(d) !== i).join("\n");
+      }
+      if(this.state.settings.filter === "nonduplicate"){
+         result = data.filter((d,i,arr)=>arr.indexOf(d) === i && arr.lastIndexOf(d) === i).join("\n");
+      } 
+        this.setState({output:result,
+                      showSettings:true
                     })
      }
 
