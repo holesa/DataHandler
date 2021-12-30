@@ -1,9 +1,6 @@
 # DataHandler : manipulate data && finish your work faster
 DataHandler is a handy React app where you can complete minor tasks such as removing duplications, counting characters, checking footprints on websites, and so on.
 
-## Demo:
-You can find a live version [here.](https://datahandler.site)  
-
 ## Features:
 * The app interface is very simple. The left column is for input data, the dropdown containing methods is in the middle and the right column is for output data. 
 * Client side is built on React.
